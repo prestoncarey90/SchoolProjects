@@ -1,8 +1,8 @@
 version: 2
 sources:
-  - name: raw_db1
+  - name: raw
     description: Raw data loaded from NYC Open Data
-    database: preston-cis-9440-s26.nyc_311_raw_data.source_dot_service_requests_history
+    database: preston-cis-9440-s26
     schema: nyc_311_raw_data 
     tables:
       - name: source_dot_service_requests_history
@@ -89,9 +89,9 @@ sources:
             description: Y coordinate in NY State Plane projection system (NAD 83)
           - name: landmark
             description: Nearby landmark or point of interest
-  - name: raw_db2
+  - name: raw_restaurants
     description: Raw data loaded from NYC Open Data
-    database: preston-cis-9440-s26.nyc_hw3_raw_data.source_nyc_open_restaurant_apps
+    database: preston-cis-9440-s26
     schema: nyc_hw3_raw_data 
     tables:
       - name: source_nyc_open_restaurant_apps
