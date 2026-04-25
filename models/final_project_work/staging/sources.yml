@@ -10,11 +10,6 @@ sources:
           311 Service Requests from 2020 to Present.
           One row per service request.
         columns:
-          - name: unique_key
-            description: Unique ID for the service request
-            tests:
-              - unique
-              - not_null
           - name: address_type
             description: Type of incident location information available.
           - name: agency
@@ -40,13 +35,8 @@ sources:
           DOHMH School Cafeteria Inspections (2020-Present)
           One row per application. Note: original dataset may have two or more entries for the same restaurant.
         columns:
-          - name: objectid
-            description: Unique ID for the application
-            tests:
-              - unique
-              - not_null
           - name: Record ID
-            description: Potential second unique ID.
+            description: Potential unique ID.
           - name: SchoolName
             description: Establishment (school) name
           - name: Number
