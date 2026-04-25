@@ -1,0 +1,59 @@
+version: 2
+sources:
+  - name: raw_311
+    description: Raw data loaded from NYC Open Data
+    database: MarianaFuturoDataWarehousingW1
+    schema: nyc_311_raw_data 
+    tables:
+      - name: source_doe-dohmh_311
+        description: |
+          311 Service Requests from 2020 to Present.
+          One row per service request.
+        columns:
+          - name: unique_key
+            description: Unique ID for the service request
+            tests:
+              - unique
+              - not_null
+          - name: address_type
+            description: Type of incident location information available.
+          - name: agency
+            description: Acronym of responding City Government Agency
+          - name: agency_name
+            description: Full Agency name of responding City Government Agency
+          - name: bbl
+            description: Borough Block and Lot, provided by geovalidation. Parcel number to identify the location of location of buildings and properties in NYC.
+          - name: borough
+            description: Provided by the submitter and confirmed by geovalidation.
+          - name: city
+            description: City of the incident location provided by geovalidation.
+
+
+
+  - name: raw_inspections
+    description: Raw data loaded from NYC Open Data
+    database: preston-cis-9440-s26
+    schema: cafeteria_inspections_dataset
+    tables:
+      - name: inspections
+        description: |
+          DOHMH School Cafeteria Inspections (2020-Present)
+          One row per application. Note: original dataset may have two or more entries for the same restaurant.
+        columns:
+          - name: objectid
+            description: Unique ID for the application
+            tests:
+              - unique
+              - not_null
+          - name: Record ID
+            description: Potential second unique ID.
+          - name: SchoolName
+            description: Establishment (school) name
+          - name: Number
+            description: Building number for establishment (school) location
+          - name: Street
+            description: Street name for establishment (school) location
+          - name: City
+            description: Municipality of establishment (school)
+          - name: State
+            description: State of establishment (school)
