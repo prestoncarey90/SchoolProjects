@@ -1,0 +1,65 @@
+# Copy/Pasting new code from HW 4 doc...
+name: 'nyc_analytics'
+version: '1.0.0'
+config-version: 2
+# Some default settings for dbt
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+ - "target"
+ - "dbt_packages"
+
+# Set up models, which are basically SQL files, to create tables
+models:
+ nyc_analytics:
+   +materialized: table
+
+   final_project_work:
+     staging:
+       +materialized: table
+       +schema: nyc_311_cafeteria_inspection_staging
+
+     marts:
+       +materialized: table
+       +schema: nyc_311_cafeteria_inspection_marts
+      
+       shared_date:
+         +materialized: table
+
+       shared_geography:
+         +materialized: table
+
+       dim_problem:
+         +materialized: table
+
+       dim_sr_government:
+         +materialized: table
+
+       dim_sr_geography:
+         +materialized: table
+
+       dim_school:
+         +materialized: table
+
+       dim_violation:
+         +materialized: table
+
+       dim_ci_geography:
+         +materialized: table
+
+       dim_ci_government:
+         +materialized: table
+
+       fact_cafeteria_inspection:
+         +materialized: table
+
+       fact_service_request:
+         +materialized: table
