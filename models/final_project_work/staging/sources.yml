@@ -2,10 +2,10 @@ version: 2
 sources:
   - name: raw_311
     description: Raw data loaded from NYC Open Data
-    database: MarianaFuturoDataWarehousingW1
-    schema: nyc_311_raw_data 
+    database: preston-cis-9440-s26
+    schema: final_project_raw_sr
     tables:
-      - name: source_doe-dohmh_311
+      - name: source_service_request
         description: |
           311 Service Requests from 2020 to Present.
           One row per service request.
@@ -22,28 +22,128 @@ sources:
             description: Provided by the submitter and confirmed by geovalidation.
           - name: city
             description: City of the incident location provided by geovalidation.
-
+          - name: closed_date
+            description: Date SR was closed by responding agency
+          - name: community_board
+            description: Provided by geovalidation. 
+          - name: complaint_type
+            description: This is the first level of a hierarchy identifying the topic of the incident or condition. Problem (formerly Complaint Type) broadly describes the topic of the incident or condition and are defined by the responding agencies. New Problems may be added in response to changes in customer demand.
+          - name: council_district
+            description: The City Council district where the service request is located.
+          - name: created_date
+            description: Date SR was created
+          - name: cross_street_1
+            description: First Cross street based on the geo validated incident location
+          - name: cross_street_2
+            description: Second Cross Street based on the geo validated incident location
+          - name: descriptor
+            description: This is associated to the Problem (formerly Complaint Type), and provides further detail on the incident or condition. Problem Detail (formerly Descriptor) values are dependent on the Problem, and are not always required in the service request.
+          - name: descriptor_2
+            description: A third level of detail about the Problem (formerly Complaint Type) beyond the Problem Detail (formerly Descriptor). This is not used by every category of issue.
+          - name: incident_address
+            description: 
+          - name: incident_zip
+            description: 
+          - name: intersection_street_1
+            description: 
+          - name: intersection_street_2
+            description: 
+          - name: landmark
+            description: 
+          - name: latitude
+            description: 
+          - name: location_type
+            description: 
+          - name: longitude
+            description: 
+          - name: open_data_channel_type
+            description: 
+          - name: park_borough
+            description: 
+          - name: park_facility_name
+            description: 
+          - name: police_precinct
+            description: 
+          - name: resolution_action_updated_date
+            description: 
+          - name: resolution_description
+            description: 
+          - name: status
+            description: 
+          - name: street_name
+            description: 
+          - name: unique_key
+            description: Unique ID for the service request
+            tests:
+              - unique
+              - not_null
+          - name: x_coordinate_state_plane
+            description: 
+          - name: y_coordinate_state_plane
+            description: 
+          
 
 
   - name: raw_inspections
     description: Raw data loaded from NYC Open Data
     database: preston-cis-9440-s26
-    schema: cafeteria_inspections_dataset
+    schema: final_project_raw_ci
     tables:
-      - name: inspections
+      - name: source_cafeteria_inspections
         description: |
           DOHMH School Cafeteria Inspections (2020-Present)
           One row per application. Note: original dataset may have two or more entries for the same restaurant.
         columns:
-          - name: Record ID
-            description: Potential unique ID.
-          - name: SchoolName
-            description: Establishment (school) name
-          - name: Number
-            description: Building number for establishment (school) location
-          - name: Street
-            description: Street name for establishment (school) location
-          - name: City
+          - name: bbl
+            description: Borough-Block-Lot
+          - name: bin
+            description: Building Identification Number
+          - name: borocode
+            description: Numerical code for the borough of establishment (school) location
+          - name: borough
+            description: Borough of establishment (school) location
+          - name: censustract
+            description: Census Tract
+          - name: city
             description: Municipality of establishment (school)
-          - name: State
+          - name: code
+            description: Violation code associated with inspection finding; Blank field indicates no violations were cited during inspection
+          - name: communityboard
+            description: Community Board
+          - name: councildistrict
+            description: NYC Council District
+          - name: entityid
+            description: Unique identifier for the establishment (school)
+            tests:
+              - unique
+              - not_null
+          - name: inspectiondate
+            description: Date an inspection was conducted
+          - name: lastinspection
+            description: Date of last inspection
+          - name: latitude
+            description: Latitude
+          - name: level
+            description: Indicator of the type of violation; Critical violations are those most likely to contribute to foodborne illness.
+          - name: longitude
+            description: Longitude
+          - name: nta
+            description: Neighborhood Tabulation Area
+          - name: number
+            description: Building number for establishment (school) location
+          - name: permittee
+            description: Name of business owner holding the permit
+          - name: ptet
+            description: Permit Type Establishment Type - The four digit code indicating the type of permit and the type of food service establishment (FSE)
+          - name: schoolname
+            description: Establishment (school) name
+          - name: site_type
+            description: The description of the type of food service establishment (FSE)
+          - name: state
             description: State of establishment (school)
+          - name: street
+            description: Street name for establishment (school) location
+          - name: violationdescription
+            description: Violation description associated with inspection finding; Blank field indicates no violations were cited during inspection
+          - name: zipcode
+            description: Zip code of establishment (school) location
