@@ -1,6 +1,6 @@
  -- Quick test to verify source connection works
  SELECT
-     agency_name,
-     bbl
- FROM {{ source('raw_311', 'source_doe-dohmh_311') }}
+     bbl,
+     bin
+ FROM {{ source('raw_inspections', 'source_cafeteria_inspections') }}
  LIMIT 10
