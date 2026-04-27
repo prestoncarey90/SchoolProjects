@@ -12,10 +12,16 @@ sources:
         columns:
           - name: address_type
             description: Type of incident location information available.
+            tests:
+              - not_null
           - name: agency
             description: Acronym of responding City Government Agency
+            tests:
+              - not_null
           - name: agency_name
             description: Full Agency name of responding City Government Agency
+            tests:
+              - not_null
           - name: bbl
             description: Borough Block and Lot, provided by geovalidation. Parcel number to identify the location of location of buildings and properties in NYC.
           - name: borough
@@ -28,10 +34,14 @@ sources:
             description: Provided by geovalidation. 
           - name: complaint_type
             description: This is the first level of a hierarchy identifying the topic of the incident or condition. Problem (formerly Complaint Type) broadly describes the topic of the incident or condition and are defined by the responding agencies. New Problems may be added in response to changes in customer demand.
+            tests:
+              - not_null
           - name: council_district
             description: The City Council district where the service request is located.
           - name: created_date
             description: Date SR was created
+            tests:
+              - not_null
           - name: cross_street_1
             description: First Cross street based on the geo validated incident location
           - name: cross_street_2
@@ -60,6 +70,8 @@ sources:
             description: Geo based Long of the incident location
           - name: open_data_channel_type
             description: Indicates how the SR was submitted to 311. i.e. By Phone, Online, Mobile, Other or Unknown.
+            tests:
+              - not_null
           - name: park_borough
             description: The borough of incident if it is a Parks Dept facility
           - name: park_facility_name
@@ -73,6 +85,8 @@ sources:
           #road_ramp returned no data
           - name: status
             description: Status of SR submitted
+            tests:
+              - not_null
           - name: street_name
             description: Street name of incident address provided by the submitter
           #variables with no data:
@@ -92,7 +106,6 @@ sources:
             description: If available, this field describes the type of city facility associated to the SR
           
 
-
   - name: raw_inspections
     description: Raw data loaded from NYC Open Data
     database: preston-cis-9440-s26
@@ -105,22 +118,38 @@ sources:
         columns:
           - name: bbl
             description: Borough-Block-Lot
+            tests:
+              - not_null
           - name: bin
             description: Building Identification Number
+            tests:
+              - not_null
           - name: borocode
             description: Numerical code for the borough of establishment (school) location
+            tests:
+              - not_null
           - name: borough
             description: Borough of establishment (school) location
+            tests:
+              - not_null
           - name: censustract
             description: Census Tract
+            tests:
+              - not_null
           - name: city
             description: Municipality of establishment (school)
+            tests:
+              - not_null
           - name: code
             description: Violation code associated with inspection finding; Blank field indicates no violations were cited during inspection
           - name: communityboard
             description: Community Board
+            tests:
+              - not_null
           - name: councildistrict
             description: NYC Council District
+            tests:
+              - not_null
           - name: entityid
             description: Unique identifier for the establishment (school)
             tests:
@@ -128,31 +157,57 @@ sources:
               - not_null
           - name: inspectiondate
             description: Date an inspection was conducted
+            tests:
+              - not_null
           - name: lastinspection
             description: Date of last inspection
+            tests:
+              - not_null
           - name: latitude
             description: Latitude
+            tests:
+              - not_null
           - name: level
             description: Indicator of the type of violation; Critical violations are those most likely to contribute to foodborne illness.
           - name: longitude
             description: Longitude
+            tests:
+              - not_null
           - name: nta
             description: Neighborhood Tabulation Area
+            tests:
+              - not_null
           - name: number
             description: Building number for establishment (school) location
+            tests:
+              - not_null
           - name: permittee
             description: Name of business owner holding the permit
+            tests:
+              - not_null
           - name: ptet
             description: Permit Type Establishment Type - The four digit code indicating the type of permit and the type of food service establishment (FSE)
+            tests:
+              - not_null
           - name: schoolname
             description: Establishment (school) name
+            tests:
+              - not_null
           - name: site_type
             description: The description of the type of food service establishment (FSE)
+            tests:
+              - not_null
           - name: state
             description: State of establishment (school)
+            tests:
+              - not_null
           - name: street
             description: Street name for establishment (school) location
+            tests:
+              - not_null
           - name: violationdescription
             description: Violation description associated with inspection finding; Blank field indicates no violations were cited during inspection
           - name: zipcode
             description: Zip code of establishment (school) location
+            tests:
+              - not_null
