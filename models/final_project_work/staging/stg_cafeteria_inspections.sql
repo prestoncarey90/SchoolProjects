@@ -55,9 +55,9 @@ typed AS (
         SAFE_CAST(inspectiondate AS TIMESTAMP) AS inspection_ts,
         SAFE_CAST(lastinspection AS TIMESTAMP) AS last_inspection_ts,
 
-        SAFE_CAST(latitude AS FLOAT64) AS latitude,
-        SAFE_CAST(longitude AS FLOAT64) AS longitude,
-        SAFE_CAST(borocode AS INT64) AS borocode
+        SAFE_CAST(latitude AS DECIMAL) AS latitude,
+        SAFE_CAST(longitude AS DECIMAL) AS longitude,
+        SAFE_CAST(borocode AS STRING) AS borocode
     FROM source
 ),
 
