@@ -8,35 +8,7 @@ WITH source AS (
 
 typed AS (
     SELECT
-        -- Keep passthrough columns except fields transformed below
-        * EXCEPT (
-            entityid,
-            schoolname,
-            number,
-            street,
-            city,
-            state,
-            borough,
-            zipcode,
-            permittee,
-            ptet,
-            site_type,
-            level,
-            code,
-            violationdescription,
-            communityboard,
-            councildistrict,
-            censustract,
-            bin,
-            bbl,
-            nta,
-            inspectiondate,
-            lastinspection,
-            latitude,
-            longitude,
-            borocode
-        ),
-
+        -- Select transformed fields explicitly to avoid star/except expansion issues
         -- IDs and school info
         NULLIF(TRIM(CAST(entityid AS STRING)), '') AS record_id,
         NULLIF(REGEXP_REPLACE(TRIM(CAST(schoolname AS STRING)), r'\s+', ' '), '') AS school_name,
@@ -125,7 +97,6 @@ cleaned AS (
     FROM typed
     WHERE record_id IS NOT NULL
 ),
-
 
 deduped AS (
     SELECT *
